@@ -1,0 +1,55 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+          //初始化主菜单
+            function sw_nav2(obj,tag)
+            {
+            var DisSub2 = document.getElementById("DisSub2_"+obj);
+            var HandleLI2= document.getElementById("HandleLI2_"+obj);
+                if(tag==1)
+                {
+                    DisSub2.style.display = "block";
+					HandleLI2.className="current i-master";
+                }
+                else
+                {
+                    DisSub2.style.display = "none";
+					HandleLI2.className="i-master";
+                }
+            }
+</script>
+ 
+    
+    
+<div id="category_tree">
+	<dl class="clearfix">
+		<div class="mainCategory">
+    		<h2><a href="search.php" target="_blank">所有商品分类</a></h2>
+    	</div>
+    	<div class="allSort">
+        	<div id="booksort">
+    		<!--{foreach from=$categories item=cat name=no}-->
+    		<div  class="dt"  {if $smarty.foreach.no.iteration eq 9}style="border-bottom:none;"{/if} onMouseOver="sw_nav2({$smarty.foreach.no.iteration},1);" onMouseOut="sw_nav2({$smarty.foreach.no.iteration},0);" >
+        		<div id="HandleLI2_{$smarty.foreach.no.iteration}" class="i-master"><a class="a {if $smarty.foreach.no.index mod 2 eq 0}{else}t{/if}" href="{$cat.url}">{$cat.name|escape:html}</a></div>
+            	<dd id=DisSub2_{$smarty.foreach.no.iteration} style="display:none">
+                	<div class="i-left">
+                    	<div class="cat-sort">
+                			<!--{foreach from=$cat.cat_id item=child}-->
+                            <div class="sort">
+                				<a class="over_2" href="{$child.url}">{$child.name|escape:html}</a>
+                				<span>
+                    				<!--{foreach from=$child.cat_id item=childer}-->
+                    				<a class="over_3" href="{$childer.url}">{$childer.name|escape:html}</a>
+                    				<!--{/foreach}-->
+                				</span>
+                            </div>
+                			<!--{/foreach}-->
+                        </div>
+                    </div>
+            	</dd> 
+        	</div>
+    		<!--{/foreach}-->
+            </div>
+    	</div> 
+	</dl>
+</div>
+

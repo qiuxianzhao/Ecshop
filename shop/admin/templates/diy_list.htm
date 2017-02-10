@@ -1,0 +1,32 @@
+<!-- $Id: brand_list.htm 6698 2007-03-09 07:00:45Z liry $ -->
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<form method="post" action="" name="listForm">
+<!-- start brand list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="3" cellspacing="1">
+    <tr>
+      <th>名称</th>
+      <th>下属分类</th>
+	  <th>操作</th>
+    </tr>
+    {foreach from=$diy_list item=diy}
+    <tr>
+      <td class="first-cell" align="center">{$diy.diy_name}
+      </td>
+      <td align="center">{$diy.diy_cat}</td>
+	  <td align="center"><a href="diy.php?act=add&code={$diy.diy_code}">修改下属分类</a></td>
+    </tr>
+    {/foreach}
+    <tr>
+      <td align="right" nowrap="true" colspan="6">
+      {include file="page.htm"}
+      </td>
+    </tr>
+  </table>
+</div>
+</form>
+{include file="pagefooter.htm"}

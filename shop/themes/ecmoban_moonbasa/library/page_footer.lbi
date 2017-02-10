@@ -1,0 +1,249 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="footer">
+	<!--{if $helps}--> 
+	<div class="footerHelp">
+    	<div class="footerBox">
+        	<div class="footerCon">
+                <!-- {foreach from=$helps item=help_cat name=foo} --> 
+                <!-- {if $smarty.foreach.foo.iteration < 7} -->
+                <ul>
+                    <li class="lititle">{$help_cat.cat_name}</li>
+                    <!-- {foreach from=$help_cat.article item=item} -->
+                    <li><a target="_blank" href="{$item.url}" title="{$item.title|escape:html}" >{$item.short_title}</a></li>
+                    <!-- {/foreach} -->
+                </ul>
+                <!-- {/if} -->
+                <!-- {/foreach} --> 
+            </div>
+        </div>
+    </div>
+    <!--{/if}-->
+    
+    <div class="f_mbs_info">
+    	<div class="f_mbs_info">
+            <img src="images/mbs_img_1.jpg">
+            <img src="images/mbs_img_2.jpg">
+            <img src="images/mbs_img_3.jpg">
+            <img src="images/mbs_img_4.jpg">
+		</div>
+    </div>
+    
+    <div class="foot_con">
+    	<div class="blank"></div>
+        <!--底部导航 start-->
+        <div class="blank"></div>
+        <div id="bottomNav" class="rolling" >
+            <!-- {if $navigator_list.bottom} -->
+            <!-- {foreach name=nav_bottom_list from=$navigator_list.bottom item=nav} -->
+            <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+            <!-- {/foreach} --> 
+            <!-- {/if} -->
+        </div>
+        <!--底部导航 end-->
+        
+        <!--版权 start-->
+        <div class="text" style="height:1px ; width:1px; overflow:hidden;">
+        	{$shop_address}
+        	<!-- 客服电话{if $service_phone} -->
+            Tel: {$service_phone}
+            <!-- 结束客服电话{/if} -->
+            <!-- 邮件{if $service_email} -->
+            E-mail: {$service_email}<br />
+            <!-- 结束邮件{/if} -->
+            <!-- QQ 号码 {foreach from=$qq item=im} -->
+            <!-- {if $im} -->
+            <a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a>
+            <!-- {/if} --> 
+            <!-- {/foreach} 结束QQ号码 -->
+            <!-- 淘宝旺旺 {foreach from=$ww item=im} -->
+            <!-- {if $im} -->
+            <a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$im|escape:u8_url}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" />{$im}</a>
+            <!-- {/if} --> 
+            <!--{/foreach} 结束淘宝旺旺 --> 
+            <!-- Yahoo Messenger {foreach from=$ym item=im} --> 
+            <!-- {if $im} --> 
+            <a href="http://edit.yahoo.com/config/send_webmesg?.target={$im}n&.src=pg" target="_blank"><img src="../images/yahoo.gif" width="18" height="17" border="0" alt="Yahoo Messenger" /> {$im}</a> 
+            <!-- {/if} --> 
+            <!-- {/foreach} 结束Yahoo Messenger --> 
+            <!-- MSN Messenger {foreach from=$msn item=im} --> 
+            <!-- {if $im} --> 
+            <img src="../images/msn.gif" width="18" height="17" border="0" alt="MSN" /> <a href="msnim:chat?contact={$im}">{$im}</a> 
+            <!-- {/if} --> 
+            <!-- {/foreach} 结束MSN Messenger --> 
+            <!-- Skype {foreach from=$skype item=im} --> 
+            <!-- {if $im} --> 
+            <img src="http://mystatus.skype.com/smallclassic/{$im|escape:url}" alt="Skype" /><a href="skype:{$im|escape:url}?call">{$im}</a> 
+            <!-- {/if} --> 
+            <!-- {/foreach} --><br />
+        </div>
+        
+        <div class="record"> {$copyright} <!-- ICP 证书{if $icp_number} -->{$lang.icp_number}:<a href="http://www.miibeian.gov.cn/" target="_blank">{$icp_number}</a><!-- 结束ICP 证书{/if} -->常年法律顾问：上海华宏律师事务所
+        <p style="color:#999;">上海市普陀区中山北路2911号中关村科技大厦2402        Tel: 4000 021 758 </p>
+        </div>
+      
+  </div>
+  <div class="blank"></div>
+  <div align="center"><a href=" http://www.ecmoban.com" target="_blank"><img src="../images/ecmoban.gif" alt="ECShop模板" /></a></div>
+  
+	<!--友情链接 start-->
+	<!--{if $img_links  or $txt_links }-->
+    <div class="footerBox">
+        <div class="blank"></div>
+        <div class="blank"></div>
+            <div >
+            <dl class="sncompany box_1" style="text-align:left; border-left:none; border-right:none; background:none;">
+                <dd class="">
+                    <span>友情链接：</span>
+                 
+                    <!-- {if $txt_links} -->
+                    <!--开始文字类型的友情链接{foreach from=$txt_links item=link name=bottom}-->
+                    <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a> <!-- {if !$smarty.foreach.bottom.last} --><span>|</span><!-- {/if} -->
+                    <!--结束文字类型的友情链接{/foreach}-->
+                    <!-- {/if} -->
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--{/if}-->
+    <!--友情链接 end-->
+</div>
+
+
+
+
+
+
+  <!-- 悬浮客服开始 -->
+
+
+
+<link href="ecmoban_qq/images/qq.css" rel="stylesheet" type="text/css" />
+<div class="QQbox" id="divQQbox" style="width: 170px; ">
+<div class="Qlist" id="divOnline" onmouseout="hideMsgBox(event);" style="display: none; " onmouseover="OnlineOver();">
+    <div class="t"></div>
+    <div class="infobox">我们营业的时间<br>9:00-18:00</div>
+    <div class="con">
+        <ul>
+ 
+  
+  
+  
+  
+  
+   <!-- QQ 号码 {foreach from=$qq item=im} -->
+      <!-- {if $im} -->
+       <li><a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a> </li>
+      <!-- {/if} -->
+      <!-- {/foreach} 结束QQ号码 -->
+      <!-- 淘宝旺旺 {foreach from=$ww item=im} -->
+      <!-- {if $im} -->
+      <li><a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$im|escape:u8_url}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" />{$im}</a></li>
+      <!-- {/if} -->
+      <!--{/foreach} 结束淘宝旺旺 -->
+      <!-- Yahoo Messenger {foreach from=$ym item=im} -->
+      <!-- {if $im} -->
+      <li><a href="http://edit.yahoo.com/config/send_webmesg?.target={$im}n&.src=pg" target="_blank"><img src="../images/yahoo.gif" width="18" height="17" border="0" alt="Yahoo Messenger" /> {$im}</a></li>
+      <!-- {/if} -->
+      <!-- {/foreach} 结束Yahoo Messenger -->
+      <!-- MSN Messenger {foreach from=$msn item=im} -->
+      <!-- {if $im} -->
+      <li><img src="../images/msn.gif" width="18" height="17" border="0" alt="MSN" /> <a href="msnim:chat?contact={$im}">{$im}</a></li>
+      <!-- {/if} -->
+      <!-- {/foreach} 结束MSN Messenger -->
+      <!-- Skype {foreach from=$skype item=im} -->
+      <!-- {if $im} -->
+      <li><img src="http://mystatus.skype.com/smallclassic/{$im|escape:url}" alt="Skype" /><a href="skype:{$im|escape:url}?call">{$im}</a></li>
+      <!-- {/if} --> 
+  <!-- {/foreach} -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+	 <!-- 客服电话{if $service_phone} -->
+     <li> 服务热线: {$service_phone}</li>
+ <!-- 结束客服电话{/if} -->
+        </ul>
+    </div>
+    <div class="b"></div>
+</div>
+<div id="divMenu" onmouseover="OnlineOver();" style="display: block; "><img src="ecmoban_qq/images/qq_1.gif" class="press" alt="在线咨询"></div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+var tips; var theTop = 120/*这是默认高度,越大越往下*/; var old = theTop;
+function initFloatTips() {
+tips = document.getElementById('divQQbox');
+moveTips();
+};
+function moveTips() {
+var tt=50;
+if (window.innerHeight) {
+pos = window.pageYOffset
+}
+else if (document.documentElement && document.documentElement.scrollTop) {
+pos = document.documentElement.scrollTop
+}
+else if (document.body) {
+pos = document.body.scrollTop;
+}
+pos=pos-tips.offsetTop+theTop;
+pos=tips.offsetTop+pos/10;
+if (pos < theTop) pos = theTop;
+if (pos != old) {
+tips.style.top = pos+"px";
+tt=10;
+//alert(tips.style.top);
+}
+old = pos;
+setTimeout(moveTips,tt);
+}
+//!]]>
+initFloatTips();
+function OnlineOver(){
+document.getElementById("divMenu").style.display = "none";
+document.getElementById("divOnline").style.display = "block";
+document.getElementById("divQQbox").style.width = "170px";
+}
+function OnlineOut(){
+document.getElementById("divMenu").style.display = "block";
+document.getElementById("divOnline").style.display = "none";
+}
+if(typeof(HTMLElement)!="undefined")    //给firefox定义contains()方法，ie下不起作用
+{   
+      HTMLElement.prototype.contains=function(obj)   
+      {   
+          while(obj!=null&&typeof(obj.tagName)!="undefind"){ //通过循环对比来判断是不是obj的父元素
+   　　　　if(obj==this) return true;   
+   　　　　obj=obj.parentNode;
+   　　}   
+          return false;   
+      };   
+}  
+function hideMsgBox(theEvent){ //theEvent用来传入事件，Firefox的方式
+　 if (theEvent){
+　 var browser=navigator.userAgent; //取得浏览器属性
+　 if (browser.indexOf("Firefox")>0){ //如果是Firefox
+　　 if (document.getElementById('divOnline').contains(theEvent.relatedTarget)) { //如果是子元素
+　　 return; //结束函式
+} 
+} 
+if (browser.indexOf("MSIE")>0){ //如果是IE
+if (document.getElementById('divOnline').contains(event.toElement)) { //如果是子元素
+return; //结束函式
+}
+}
+}
+/*要执行的操作*/
+document.getElementById("divMenu").style.display = "block";
+document.getElementById("divOnline").style.display = "none";
+}
+</script>
+ 

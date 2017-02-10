@@ -1,0 +1,147 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="themes/ecmoban_suning/qq/images/qq.css" rel="stylesheet" type="text/css" />
+ {insert_scripts files='jquery-1.11.3.min.js,jquery.json.js'}
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script type="text/javascript">
+//设为首页 www.ecmoban.com
+function SetHome(obj,url){
+    try{
+        obj.style.behavior='url(#default#homepage)';
+       obj.setHomePage(url);
+   }catch(e){
+       if(window.netscape){
+          try{
+              netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+         }catch(e){
+              alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
+          }
+       }else{
+        alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【"+url+"】设置为首页。");
+       }
+  }
+}
+ 
+//收藏本站 bbs.ecmoban.com
+function AddFavorite(title, url) {
+  try {
+      window.external.addFavorite(url, title);
+  }
+catch (e) {
+     try {
+       window.sidebar.addPanel(title, url, "");
+    }
+     catch (e) {
+         alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请使用Ctrl+D进行添加");
+     }
+  }
+}
+
+function show_div(obj){
+	if(obj.className == "more-menu")
+	{
+		obj.className = "more-menu hover";
+	}
+	else
+	{
+		obj.className = "more-menu";
+	}
+}
+</script>
+{insert_scripts files='transport_jquery.js,utils.js'}
+
+<div id="header" class="new_header">
+  <div class="hd_bar">
+    <div class="bd_bar_bd cle">
+      <ul class="welcome">
+        <li><a id="favorite_wb" href="javascript:AddFavorite('{$shop_name}',location.href);"><i class="iconfont">Ū</i>收藏{$shop_name}</a></li>
+		<li id="ECS_MEMBERZONE">{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'}</li>
+      </ul>
+      <ul id="userinfo-bar">
+        <li class="more-menu" onMouseOver="show_div(this)" onMouseOut="show_div(this)"> <a href="user.php">我的丽子</a><i class="iconfont arrow">&#8193;</i>
+          <div class="more-bd">
+            <div class="list"> <a href="user.php?act=order_list">我的订单</a> <a href="user.php?act=comment_list">我的评价</a> <a href="user.php?act=account_log">我的余额</a> <a href="user.php?act=bonus">我的红包</a> <a href="user.php?act=collection_list">我的收藏</a> <a href="user.php?act=address_list" class="last">修改收货地址</a> </div>
+          </div>
+        </li>
+        <li><a href="user.php"><i class="iconfont vipico"></i>会员专区</a></li>
+        <li class="more-menu" id="header_guanzhu" onMouseOver="show_div(this)" onMouseOut="show_div(this)"><a class="menu-link" href="javascript:;">关注我们：</a><i class="iconfont arrow">&#8193;</i>
+          <div class="more-bd">
+            <div class="list">
+              <p>
+                <iframe width="70" height="24" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" scrolling="no" border="0" src="http://widget.weibo.com/relationship/followbutton.php?width=70&amp;height=24&amp;uid=3240587872&amp;style=1&amp;btn=red&amp;dpc=1"></iframe>
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+            alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+  <div class="hd_main cle">
+    <div class="logo">
+      <p> <a href="./index.php" class="lizi_logo">丽子美妆</a> </p>
+    </div>
+    <div class="search_box">
+      <form action="search.php" method="get" id="searchForm" name="searchForm" onSubmit="return checkSearchForm()">
+        <input class="sea_input" type="text" name="keywords" id="keyword" value="{$search_keywords|escape}" autocomplete="off">
+        <input type="hidden" value="k1" name="dataBi">
+        <button type="submit" class="sea_submit">搜索</button>
+      </form>
+    </div>
+    {if $searchkeywords}
+    <div class="head_search_hot"> <span>{$lang.hot_search}：</span> {foreach from=$searchkeywords item=val} <a href="search.php?keywords={$val|escape:url}" target="_blank">{$val}</a> {/foreach} </div>
+    {/if}
+    <div class="intro">
+      <ul>
+        <li class="no1"><a href="javascript:void(0);" target="_blank">
+          <h4>正品保障</h4>
+          <p>中国人保承保</p>
+          </a></li>
+        <li class="no2"><a href="javascript:void(0);" target="_blank">
+          <h4>30天退换货</h4>
+          <p>购物有保障</p>
+          </a></li>
+        <li class="no3"><a href="javascript:void(0);" target="_blank">
+          <h4>满99就包邮</h4>
+          <p>闪电发货</p>
+          </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="hd_nav">
+    <div class="hd_nav_bd cle">
+      <div class="main_nav" id="main_nav">
+        <div class="main_nav_link"> <a href="javascript:;">全部商品分类</a>  </div>
+    
+      </div>
+      
+      <ul class="sub_nav cle" id="sub_nav">
+        <li{if $navigator_list.config.index eq 1} class="current"{/if}><a href="../index.php" rel="nofollow">{$lang.home}</a></li>
+        <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} --> 
+        <li{if $nav.active eq 1} class="current"{/if}><a href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if} rel="nofollow">{$nav.name}</a>
+        </li>
+        <!-- {/foreach} -->
+      </ul>
+  
+    </div>
+  </div>
+  <div class="search_result"></div>
+</div>

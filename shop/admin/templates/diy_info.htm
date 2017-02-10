@@ -1,0 +1,32 @@
+<!-- $Id: brand_info.htm 12681 2007-10-09 01:33:39Z weberliu $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+<form method="post" action="diy.php" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+<table cellspacing="1" cellpadding="3" width="100%">
+  <tr>
+    <td class="label">名称</td>
+    <td>{$diys.diy_name}</td>
+  </tr>
+  <tr>
+    <td class="label">当前下属分类</td>
+    <td>{$diys.diy_cat}</td>
+  </tr>
+ 
+  <tr>
+    <td class="label">下属分类</td>
+    <td><select name="cat_id[]" size="10" multiple="multiple">
+	  <option value="0">{$lang.select_please}</option>{$cat_list}</select>{$lang.require_field}<font color='#ff0000'>请选择具体的分类，不要选择顶级分类</font>
+	</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><br />
+      <input type="submit" class="button" value="{$lang.button_submit}" />
+      <input type="reset" class="button" value="{$lang.button_reset}" />
+      <input type="hidden" name="act" value="{$form_action}" />
+      <input type="hidden" name="code" value="{$diys.diy_code}" />
+     </td>
+  </tr>
+</table>
+</form>
+</div>
+{include file="pagefooter.htm"}
